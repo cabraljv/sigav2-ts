@@ -18,6 +18,8 @@
         "@typescript-eslint/comma-dangle": "off",
         "@typescript-eslint/indent": "off",
         "@typescript-eslint/space-before-function-paren": "off",
+        "@typescript-eslint/no-misused-promises": "off",
+        "@typescript-eslint/unbound-method": "off",
         "@typescript-eslint/strict-boolean-expressions": "off"
     }
 }

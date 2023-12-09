@@ -1,0 +1,35 @@
+# api and postgres db
+
+version: '3'
+
+services:
+  postgres:
+    image: postgres:12
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - 5432:5432
+  api:
+    build:
+      context: .
+      dockerfile: config/Dockerfile.api
+    working_dir: /app
+    links:
+      - postgres
+    volumes:
+      - node-modules:/app/node_modules
+      - ./:/app
+    ports:
+      - 8000:8000
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+volumes:
+    node-modules:
